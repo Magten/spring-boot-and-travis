@@ -1,4 +1,4 @@
-package com.magten.bean;
+package com.magten.domain;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
