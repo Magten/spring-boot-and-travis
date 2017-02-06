@@ -21,7 +21,7 @@ public class HunterController {
 
 	// hard code in this moment
 	@RequestMapping("/add")
-	public Hunter save(String username) {
+	public Hunter add(String username) {
 		Hunter hunter = new Hunter(username);
 		hunter.setID(UUID.randomUUID().toString());
 		hunter.setBalance(new BigDecimal(10));
@@ -42,7 +42,7 @@ public class HunterController {
 	}
 
 	@RequestMapping("/remove")
-	public Hunter delete(String username) {
+	public Hunter remove(String username) {
 		Hunter hunter = hunterRespositroy.findByUsername(username);
 		hunterRespositroy.deleteByUsername(username);
 		return hunter;
@@ -50,7 +50,7 @@ public class HunterController {
 
 	// hard code in this moment
 	@RequestMapping("/save")
-	public Hunter update(String username) {
+	public Hunter save(String username) {
 		Hunter hunter = hunterRespositroy.findByUsername(username);
 		hunter.setBalance(hunter.getBalance().add(hunter.getBalance()));
 		return hunterRespositroy.save(hunter);
