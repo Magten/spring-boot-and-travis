@@ -13,8 +13,9 @@ public class Hunter {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private String ID;
+	private String id;
 	private String username;
+	private String password;
 	private Boolean isActivated;
 	private Timestamp createdTime;
 	private BigDecimal balance;
@@ -27,12 +28,17 @@ public class Hunter {
 		this.username = username;
 	}
 
-	public String getID() {
-		return ID;
+	public Hunter(String username, String password) {
+		this.username = username;
+		this.password = password;
 	}
 
-	public void setID(String iD) {
-		ID = iD;
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
 	}
 
 	public String getUsername() {
@@ -41,6 +47,14 @@ public class Hunter {
 
 	public void setUsername(String username) {
 		this.username = username;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
 	public Boolean getIsActivated() {

@@ -13,6 +13,8 @@ import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
+import org.springframework.util.LinkedMultiValueMap;
+import org.springframework.util.MultiValueMap;
 
 import com.magten.domain.Hunter;
 import com.magten.repository.HunterRespositroy;
@@ -37,9 +39,12 @@ public class HunterControllerTest {
 	@Test
 	public void testAdd() throws Exception {
 		String username = "TesterAdd";
+		String password = "TesterAddPassword";
+		MultiValueMap<String, String> map = new LinkedMultiValueMap<String, String>();
+		map.add("username", username);
+		map.add("password", password);
 		Assert.assertNull(hunterRespositroy.findByUsername(username));
-		mock.perform(MockMvcRequestBuilders.get("/hunter/add?username=" + username))
-				.andDo(MockMvcResultHandlers.print());
+		mock.perform(MockMvcRequestBuilders.post("/hunter/add").params(map)).andDo(MockMvcResultHandlers.print());
 		Assert.assertNotNull(hunterRespositroy.findByUsername(username));
 	}
 
